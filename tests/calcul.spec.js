@@ -8,6 +8,7 @@ test('has title', async ({ page }) => {
   await expect(page).toHaveTitle(/Playwright/);
 });
 
+// Test button color doesn't work
 test('button is red', async ({ page }) => {
   await page.goto('http://localhost:5173/');
 
@@ -22,21 +23,29 @@ test('button is red', async ({ page }) => {
   expect(btnColor).toBe('red');
 })
 
-test('reset button works', async ({ page }) => {
+// Test reset button work
+test('reset button', async ({ page }) => {
   await page.goto('http://localhost:5173/');
   await page.click('.btnReset');
   const screenText = await page.$eval('div[name="screen"]', el => el.textContent);
   expect(screenText).toBe('0');
 });
 
-/*
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+// Test button and display are different
+test('button click number', async ({ page }) => {
+  await page.goto('http://localhost:5173/');
+  await page.click('#1');
+  const screenText = await page.$eval('div[name="screen"]', el => el.textContent);
+  expect(screenText).toBe('1');
+})
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
+// To do
 
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
-});
-*/
+// Test soustraction
+// Test addition
+// Test multiplication
+// Test sum
+
+// There is a bug when we click on the number, it doesn't display the good number (3, 5)
+// Soustraction and addition doesn't work
+// Multiplication seem correct 

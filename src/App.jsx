@@ -41,6 +41,7 @@ function App() {
     }
   }, [currentValue, operation, chiffre])
 
+  // Reset calculator
   const handleReset = useCallback(() => { 
       updateCurrent(undefined);
       updateChiffre(undefined);
