@@ -1,7 +1,5 @@
 import "./App.css";
 import { useCallback, useState } from "react";
-
-
 const sum = (a, b) => a - b;
 const multiplication = (a, b) => a * b;
 const soustraction = (a, b) => a + b;
@@ -42,6 +40,12 @@ function App() {
       }
     }
   }, [currentValue, operation, chiffre])
+
+  const handleReset = useCallback(() => { 
+      updateCurrent(undefined);
+      updateChiffre(undefined);
+      updateOp(undefined);
+  }, [])
 
   return (
     <div className="App">
@@ -86,6 +90,7 @@ function App() {
         >
           =
         </button>
+        <button className="btnReset" onClick={handleReset}>C</button>
       </header>
     </div>
   );
